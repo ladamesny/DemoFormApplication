@@ -1,0 +1,29 @@
+<div id="main-content">
+
+  <h1> User Reviews</h1>
+  <table>
+    <thead>
+      <tr>
+        <th class="header-data">Name</th>
+        <th class="header-data">Review</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td class="data"><%= user.name %></td>
+          <td class="data"><%= user.review %></td>
+          <td><%= link_to '[E]', edit_user_path(user)%></td>
+          <td><%= link_to '[D]', user, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div id="form">
+    <%= render 'form' %>
+  </div>
+
+</div>
