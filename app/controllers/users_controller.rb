@@ -2,14 +2,17 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   
   def new
-    @user = User.new
     @users = User.all
   end
 
   def create
-    @user = User.create(user_params)
-    redirect_to new_user_path
-
+    @user = User.new(user_params)
+    respond_to do |format|
+      if @user.save
+        format.html {redirect_to new_user_path}
+        format.js
+      end
+    end
   end
 
   def edit
@@ -23,7 +26,10 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to new_user_path
+    respond_to do |format|
+      format.html {redirect_to new_user_path}
+      format.js
+    end
   end
 
   private

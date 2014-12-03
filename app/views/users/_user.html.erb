@@ -1,0 +1,8 @@
+<%= content_tag_for(:tr, user) do %>
+  <td class="data"><%= user.name %></td>
+  <td class="data"><%= user.review %></td>
+  <div class="actions">
+    <td><%= link_to '[E]', edit_user_path(user)%></td>
+    <td><%= link_to '[D]', user, method: :delete, remote: true %></td>
+  </div>
+<% end %>

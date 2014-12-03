@@ -1,0 +1,8 @@
+<% if @user.new_record? %>
+  $('input#user_name').effect('highlight', {color: 'red'});
+<% else %>
+  $('tbody#users').append("<%= escape_javascript(render @user) %>");
+  $('tr#<%= dom_id(@user) %>').effect('highlight');
+<% end %>
+
+$('input#user_name , input#user_review' ).val("");
